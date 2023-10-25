@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Okt 2023 pada 11.22
--- Versi server: 10.4.27-MariaDB
--- Versi PHP: 8.2.0
+-- Generation Time: Oct 25, 2023 at 10:34 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mahasiswa`
+-- Table structure for table `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -34,60 +34,42 @@ CREATE TABLE `mahasiswa` (
   `email` varchar(100) DEFAULT NULL,
   `usia` int(11) DEFAULT NULL,
   `programStudi` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Struktur dari tabel `programstudi`
+-- Dumping data for table `mahasiswa`
 --
 
-CREATE TABLE `programstudi` (
-  `id_studi` int(11) NOT NULL,
-  `kodeProgramStudi` varchar(200) DEFAULT NULL,
-  `namaProgramStudi` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `programstudi`
---
-
-INSERT INTO `programstudi` (`id_studi`, `kodeProgramStudi`, `namaProgramStudi`) VALUES
-(1, '2312', 'amoeba');
+INSERT INTO `mahasiswa` (`id_mhs`, `namaMahasiswa`, `npm`, `email`, `usia`, `programStudi`) VALUES
+(1, 'ads', '1', 'dasd', 123, 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `mahasiswa`
+-- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`id_mhs`),
   ADD KEY `hubungan` (`programStudi`);
 
 --
--- Indeks untuk tabel `programstudi`
---
-ALTER TABLE `programstudi`
-  ADD PRIMARY KEY (`id_studi`);
-
---
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `programstudi`
+-- AUTO_INCREMENT for table `mahasiswa`
 --
-ALTER TABLE `programstudi`
-  MODIFY `id_studi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `mahasiswa`
+  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `mahasiswa`
+-- Constraints for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD CONSTRAINT `hubungan` FOREIGN KEY (`programStudi`) REFERENCES `programstudi` (`id_studi`);
